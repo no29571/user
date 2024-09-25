@@ -12,6 +12,9 @@ import lombok.Setter;
 public class LocalUserForm {
 	private Integer id;
 	
+	@ByteLength(min = 1, max = 100)
+	private String name;
+	
 	@Size(min = 1, max = 100)
 	@Email
 	private String email;
@@ -20,7 +23,4 @@ public class LocalUserForm {
 	@Size(min = 1, max = 50)
 	private String passwordRaw;
 	private String password;
-	
-	@ByteLength(min = 1, max = 100)
-	private String name;
 }
