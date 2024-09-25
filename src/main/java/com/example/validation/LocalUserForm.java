@@ -15,7 +15,12 @@ public class LocalUserForm {
 	@Size(min = 1, max = 100)
 	@Email
 	private String email;
-		
+	
+	//@Size(min = 1, max = 72)
+	@Size(min = 1, max = 50)
+	private String passwordRaw;
+	private String password;
+	
 	@ByteLength(min = 1, max = 100)
 	private String name;
 }

@@ -26,6 +26,7 @@
 		<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
 	</div>
 	<div>
+		<input type="hidden" th:field="*{password}" />
 		<input type="hidden" th:field="*{id}" />
 		<button type="submit">登録</button>
 	</div>

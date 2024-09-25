@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,15 +55,19 @@ public class LocalUserController {
 		if (result.hasErrors()) {
 			return "/user/create";
 		}
-		userService.save(form);
+		userService.insert(form);
 		return "redirect:/listUser";
 	}
 	
 	//edit(& delete)リンク押下時
 	@GetMapping("/editUser/{id}")
 	public String editUser(@PathVariable(value = "id") int id, Model model) {
-		//id存在しない場合はcreateと同様にする
-		LocalUser user = userService.findById(id).orElse(new LocalUser());
+		//LocalUser user = userService.findById(id).orElse(new LocalUser());
+		Optional<LocalUser> opt = userService.findById(id);
+		if (!opt.isPresent()) {
+			return "redirect:/createUser";
+		}
+		LocalUser user = opt.get();
 		LocalUserForm form = new LocalUserForm();
 		BeanUtils.copyProperties(user, form);
 		model.addAttribute("localUserForm", form);
@@ -75,7 +80,7 @@ public class LocalUserController {
 		if (result.hasErrors()) {
 			return "/user/edit";
 		}
-		userService.save(form);
+		userService.update(form);
 		return "redirect:/listUser";
 	}
 	

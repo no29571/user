@@ -13,6 +13,24 @@
 	<li><a th:href="@{/logout}">ログアウト</a></li>
 	<li><a th:href="@{/listUser}">ユーザ一覧</a></li>
 </ul>
+<h2>4. Loginのカスタマイズ</h2>
+<div>
+	<a href="https://github.com/no29571/user/tree/ex-login">GitHub：ex-login</a>
+</div>
+<ol>
+	<li>drop table local_user cascade;</li>
+	<li>Configクラスを作成</li>
+	<li>EntityとDTOとテンプレートにパスワードのフィールドを追加</li>
+	<li>Serviceクラスにパスワード暗号化を追加</li>
+	<li>Controllerクラスの対応</li>
+	<li>UserDetailsクラスとUserDetailsServiceクラスを作成</li>
+	<li>ログインのテンプレートを作成</li>
+	<li>Controllerクラスにマッピングを追加</li>
+	<li>data.sql（ログインテスト用初期ユーザ登録）を作成</li>
+	<li>application.propertiesで上記実行設定を追加</li>
+	<li>※テーブル作成のタイミングによりエラーになる場合は手動insert</li>
+	<li>上記ユーザ(test@example.com/test)でログイン</li>
+</ol>
 <h2>3. Validation</h2>
 <div>
 	<a href="https://github.com/no29571/user/tree/ex-validation">GitHub：ex-validation</a>

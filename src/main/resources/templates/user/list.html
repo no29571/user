@@ -28,6 +28,7 @@
 			<th>id</th>
 			<th>name</th>
 			<th>email</th>
+			<th>password</th>
 			<th>操作</th>
 		</tr>
 	</thead>
@@ -36,6 +37,7 @@
 			<td th:text="${user.id}"></td>
 			<td th:text="${user.name}"></td>
 			<td th:text="${user.email}"></td>
+			<td th:text="${user.password}"></td>
 			<td>
 				<a th:href="@{/editUser/{id}(id=${user.id})}">編集・削除</a>
 			</td>

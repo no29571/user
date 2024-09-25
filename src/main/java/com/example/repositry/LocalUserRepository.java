@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.entity.LocalUser;
 
 public interface LocalUserRepository extends JpaRepository<LocalUser, Integer> {
-	//重複チェックで使用
+	//ログインと重複チェックで使用
 	Optional<LocalUser> findByEmail(String email);
 	//boolean existsByEmail(String email);
 	
