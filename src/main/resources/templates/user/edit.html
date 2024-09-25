@@ -14,14 +14,16 @@
 </div>
 <h1>edit</h1>
 <!--編集フォーム-->
-<form th:action="@{/saveUser}" th:object="${user}" method="post">
+<form th:action="@{/editUser}" th:object="${localUserForm}" method="post">
 	<div>
 		<label for="name">name</label>
 		<input type="text" th:field="*{name}" id="name" />
+		<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 	</div>
 	<div>
 		<label for="email">email</label>
 		<input type="text" th:field="*{email}" id="email" />
+		<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
 	</div>
 	<div>
 		<input type="hidden" th:field="*{id}" />
@@ -29,7 +31,7 @@
 	</div>
 </form>
 <!--削除フォーム-->
-<form th:action="@{/deleteUser}" th:object="${user}" method="post">
+<form th:action="@{/deleteUser}" th:object="${localUserForm}" method="post">
 	<div>
 		<input type="hidden" th:field="*{id}" />
 		<button type="submit">削除</button>

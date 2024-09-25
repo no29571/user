@@ -2,9 +2,12 @@ package com.example.controller;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.entity.LocalUser;
 import com.example.service.LocalUserService;
+import com.example.validation.LocalUserForm;
 
 @Controller
 public class LocalUserController {
@@ -39,9 +43,19 @@ public class LocalUserController {
 	//createリンク押下時
 	@GetMapping("/createUser")
 	public String createUser(Model model) {
-		LocalUser user = new LocalUser();
-		model.addAttribute("user", user);
+		LocalUserForm form = new LocalUserForm();
+		model.addAttribute("localUserForm", form);
 		return "/user/create";
+	}
+	
+	//createフォームsubmit時
+	@PostMapping("/createUser")
+	public String createUser(@Validated LocalUserForm form, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			return "/user/create";
+		}
+		userService.save(form);
+		return "redirect:/listUser";
 	}
 	
 	//edit(& delete)リンク押下時
@@ -49,21 +63,26 @@ public class LocalUserController {
 	public String editUser(@PathVariable(value = "id") int id, Model model) {
 		//id存在しない場合はcreateと同様にする
 		LocalUser user = userService.findById(id).orElse(new LocalUser());
-		model.addAttribute("user", user);
+		LocalUserForm form = new LocalUserForm();
+		BeanUtils.copyProperties(user, form);
+		model.addAttribute("localUserForm", form);
 		return "/user/edit";
 	}
 	
-	//create・editの入力フォームsubmit時
-	@PostMapping("/saveUser")
-	public String saveUser(@ModelAttribute("user") LocalUser user) {
-		userService.save(user);
+	//editフォームsubmit時
+	@PostMapping("/editUser")
+	public String editUser(@Validated LocalUserForm form, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			return "/user/edit";
+		}
+		userService.save(form);
 		return "redirect:/listUser";
 	}
 	
 	//deleteフォームsubmit時
 	@PostMapping("/deleteUser")
-	public String deleteUser(@ModelAttribute("user") LocalUser user) {
-		userService.delete(user.getId());
+	public String deleteUser(@ModelAttribute("localUserForm") LocalUserForm form) {
+		userService.delete(form.getId());
 		return "redirect:/listUser";
 	}
 }

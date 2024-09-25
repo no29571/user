@@ -1,5 +1,6 @@
 package com.example.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +16,9 @@ public class LocalUser {//local_user
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Column(length = 100, nullable = false)
 	private String name;
+	
+	@Column(length = 100, nullable = false, unique = true)
 	private String email;
 }
