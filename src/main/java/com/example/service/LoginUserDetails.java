@@ -10,15 +10,10 @@ import com.example.entity.LocalUser;
 
 //Spring Security
 public class LoginUserDetails implements UserDetails {
-	private static final long serialVersionUID = 1L;
 	private LocalUser user;
 	
 	public LoginUserDetails(LocalUser user) {
 		this.user = user;
-	}
-	
-	public Integer getId() {
-		return user.getId();
 	}
 	
 	@Override
