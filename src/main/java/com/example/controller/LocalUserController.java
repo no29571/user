@@ -47,6 +47,7 @@ public class LocalUserController {
 	//edit(& delete)リンク押下時
 	@GetMapping("/editUser/{id}")
 	public String editUser(@PathVariable(value = "id") int id, Model model) {
+		//id存在しない場合はcreateと同様にする
 		LocalUser user = userService.findById(id).orElse(new LocalUser());
 		model.addAttribute("user", user);
 		return "/user/edit";
