@@ -4,13 +4,26 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link th:href="@{/css/site.css}" rel="stylesheet" />
 <title>home | sample</title>
 </head>
 <body>
 <h1>認証とマスタメンテのサンプル</h1>
 <ul>
 	<li><a th:href="@{/logout}">ログアウト</a></li>
+	<li><a th:href="@{/listUser}">ユーザ一覧</a></li>
 </ul>
+<h2>2. CRUD</h2>
+<div>
+	<a href="https://github.com/no29571/user/tree/ex-crud">GitHub：ex-crud</a>
+</div>
+<ol>
+	<li>Entityクラスを作成</li>
+	<li>Repositoryクラスを作成</li>
+	<li>Serviceクラスを作成</li>
+	<li>Controllerクラスを作成</li>
+	<li>CSS（resources/static配下）とテンプレートを作成</li>
+</ol>
 <h2>1. Hello World</h2>
 <div>
 	<a href="https://github.com/no29571/user/tree/ex-hello">GitHub：ex-hello</a>
