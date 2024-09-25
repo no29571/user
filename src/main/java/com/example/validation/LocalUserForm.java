@@ -1,5 +1,9 @@
 package com.example.validation;
 
+import com.example.entity.Role;
+
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -23,4 +27,8 @@ public class LocalUserForm {
 	@Size(min = 1, max = 50)
 	private String passwordRaw;
 	private String password;
+	
+	@Enumerated(EnumType.STRING)
+	private Role role;
+	private Role[] roleList = Role.values();
 }

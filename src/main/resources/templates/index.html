@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja"
 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
@@ -10,9 +11,23 @@
 <body>
 <h1>認証とマスタメンテのサンプル</h1>
 <ul>
-	<li><a th:href="@{/logout}">ログアウト</a></li>
+	<li><a th:href="@{/logout}"><span sec:authentication="name"></span>: ログアウト</a></li>
 	<li><a th:href="@{/listUser}">ユーザ一覧</a></li>
 </ul>
+<h2>5. ROLE・ログイン情報の使用</h2>
+<div>
+	<a href="https://github.com/no29571/user/tree/ex-role">GitHub：ex-role</a>
+</div>
+<ol>
+	<li>drop table local_user cascade;</li>
+	<li>Roleクラスを作成</li>
+	<li>EntityとDTOとテンプレートにRoleのフィールドを追加</li>
+	<li>DTOクラスにRoleのプルダウンリストを追加</li>
+	<li>UserDetailsクラス（getAuthorities）の対応</li>
+	<li>Configクラスの権限設定例（ユーザ登録・編集）</li>
+	<li>テンプレートの権限設定例（削除フォーム）</li>
+	<li>テンプレートへのログイン情報出力例（ログインIDを出力）</li>
+</ol>
 <h2>4. Loginのカスタマイズ</h2>
 <div>
 	<a href="https://github.com/no29571/user/tree/ex-login">GitHub：ex-login</a>

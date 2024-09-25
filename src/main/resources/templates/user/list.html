@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja"
 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
@@ -9,7 +10,7 @@
 </head>
 <body>
 <div>
-	<a th:href="@{/logout}">ログアウト</a>
+	<a th:href="@{/logout}"><span sec:authentication="name"></span>: ログアウト</a>
 </div>
 <h1>list</h1>
 <div>
@@ -28,7 +29,8 @@
 			<th>id</th>
 			<th>name</th>
 			<th>email</th>
-			<th>password</th>
+			<!--<th>password</th>-->
+			<th>role</th>
 			<th>操作</th>
 		</tr>
 	</thead>
@@ -37,7 +39,8 @@
 			<td th:text="${user.id}"></td>
 			<td th:text="${user.name}"></td>
 			<td th:text="${user.email}"></td>
-			<td th:text="${user.password}"></td>
+			<!--<td th:text="${user.password}"></td>-->
+			<td th:text="${user.role}"></td>
 			<td>
 				<a th:href="@{/editUser/{id}(id=${user.id})}">編集・削除</a>
 			</td>

@@ -29,6 +29,13 @@
 		<span th:if="${#fields.hasErrors('passwordRaw')}" th:errors="*{passwordRaw}"></span>
 	</div>
 	<div>
+		<label for="role">role</label>
+		<select th:field="*{role}" id="role">
+			<option th:each="item : *{roleList}" th:value="${item.name}" th:text="${item.displayName}"></option>
+		</select>
+		<span th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></span>
+	</div>
+	<div>
 		<button type="submit">登録</button>
 	</div>
 </form>
