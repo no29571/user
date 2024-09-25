@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>home | sample</title>
+</head>
+<body>
+<h1>認証とマスタメンテのサンプル</h1>
+<ul>
+	<li><a th:href="@{/logout}">ログアウト</a></li>
+</ul>
+<h2>1. Hello World</h2>
+<div>
+	<a href="https://github.com/no29571/user/tree/ex-hello">GitHub：ex-hello</a>
+</div>
+<h3>Spring Starter Project作成時に設定する依存関係</h3>
+<ul>
+	<li>Spring Boot DevTools (Developer Tools)</li>
+	<li>Lombok (Developer Tools)</li>
+	<li>Validation (I/O)</li>
+	<li>Spring Data JPA (SQL)</li>
+	<li>PostgreSQL Driver (SQL)</li>
+	<li>Thymeleaf (Template Engines)</li>
+	<li>Spring Web (Web)</li>
+	<li>Spring Security (Security)</li>
+</ul>
+<h3>依存関係にSQLを設定した場合</h3>
+<ol>
+	<li>application.propertiesにDB接続定義を記載</li>
+	<li>データベース作成</li>
+</ol>
+<pre>
+--psqlで実行(postgresでログイン)
+CREATE ROLE ex_user LOGIN;
+
+CREATE DATABASE ex_db1 WITH OWNER = ex_user
+ENCODING = 'UTF-8'
+TABLESPACE = pg_default
+LC_COLLATE = 'C'
+LC_CTYPE = 'C'
+CONNECTION LIMIT = -1;
+</pre>
+<h3>手順</h3>
+<ol>
+	<li>Controllerクラスを作成</li>
+	<li>テンプレート（resources/templates配下)を作成</li>
+	<li>実行（Run as Spring Boot App）</li>
+	<li><a href="http://localhost:8080">localhost</a></li>
+</ol>
+<h3>依存関係にSecurityを設定した場合（デフォルトの認証機能）</h3>
+<ol>
+	<li>Username: user</li>
+	<li>Password: コンソールに出力されているパスワード（Using generated security password:～）</li>
+	<li>Sign in</li>
+</ol>
+</body>
+</html>
