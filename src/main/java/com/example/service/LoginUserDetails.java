@@ -10,10 +10,21 @@ import com.example.entity.LocalUser;
 
 //Spring Security
 public class LoginUserDetails implements UserDetails {
+	private static final long serialVersionUID = 1L;
 	private LocalUser user;
 	
 	public LoginUserDetails(LocalUser user) {
 		this.user = user;
+	}
+	
+	public Integer getId() {
+		//更新情報（作成者・更新者）に使用
+		return user.getId();
+	}
+	
+	public String getDisplayName() {
+		//ログイン情報出力に使用
+		return user.getName();
 	}
 	
 	@Override

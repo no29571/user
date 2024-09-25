@@ -10,7 +10,7 @@
 </head>
 <body>
 <div>
-	<a th:href="@{/logout}"><span sec:authentication="name"></span>: ログアウト</a>
+	<a th:href="@{/logout}"><span sec:authentication="principal.displayName"></span>: ログアウト</a>
 </div>
 <h1>list</h1>
 <div>
@@ -31,6 +31,10 @@
 			<th>email</th>
 			<!--<th>password</th>-->
 			<th>role</th>
+			<th>createdBy</th>
+			<th>createdDate</th>
+			<th>modifiedBy</th>
+			<th>modifiedDate</th>
 			<th>操作</th>
 		</tr>
 	</thead>
@@ -41,6 +45,10 @@
 			<td th:text="${user.email}"></td>
 			<!--<td th:text="${user.password}"></td>-->
 			<td th:text="${user.role}"></td>
+			<td th:text="${user.createdBy}"></td>
+			<td th:text="${#temporals.format(user.createdDate,'yyyy/MM/dd HH:mm')}"></td>
+			<td th:text="${user.modifiedBy}"></td>
+			<td th:text="${#temporals.format(user.modifiedDate,'yyyy/MM/dd HH:mm')}"></td>
 			<td>
 				<a th:href="@{/editUser/{id}(id=${user.id})}">編集・削除</a>
 			</td>
