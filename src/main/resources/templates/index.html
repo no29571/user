@@ -11,23 +11,9 @@
 <body>
 <h1>認証とマスタメンテのサンプル</h1>
 <ul>
-	<li><a th:href="@{/logout}"><span sec:authentication="principal.displayName"></span>: ログアウト</a></li>
+	<li><a th:href="@{/logout}"><span sec:authentication="name"></span>: ログアウト</a></li>
 	<li><a th:href="@{/listUser}">ユーザ一覧</a></li>
 </ul>
-<h2>6. JPA Auditing（更新情報の自動設定）</h2>
-<div>
-	<a href="https://github.com/no29571/user/tree/ex-audit">GitHub：ex-audit</a>
-</div>
-<ol>
-	<li>drop table local_user cascade;</li>
-	<li>Configクラスを作成</li>
-	<li>UserDetailsクラス（getId）の対応</li>
-	<li>Auditingの共通クラス（親クラス）を作成</li>
-	<li>Entityクラスに上記の継承を設定</li>
-	<li>※親クラスをつくらずEntityクラスに直接フィールド追加でも可</li>
-	<li>テンプレートを調整</li>
-	<li>insert into local_user</li>
-</ol>
 <h2>5. ROLE・ログイン情報の使用</h2>
 <div>
 	<a href="https://github.com/no29571/user/tree/ex-role">GitHub：ex-role</a>
