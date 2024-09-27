@@ -12,8 +12,26 @@
 <h1>認証とマスタメンテのサンプル</h1>
 <ul>
 	<li><a th:href="@{/logout}"><span sec:authentication="principal.displayName"></span>: ログアウト</a></li>
+	<li><a th:href="@{/changePassword}">パスワード変更</a></li>
 	<li><a th:href="@{/listUser}">ユーザ一覧</a></li>
 </ul>
+<h2>7. 排他制御</h2>
+<div>
+	<a href="https://github.com/no29571/user/tree/ex-lock">GitHub：ex-lock</a>
+</div>
+<ol>
+	<li>drop table local_user cascade;</li>
+	<li>パスワード変更のテンプレートを作成</li>
+	<li>DTO（メソッドによる入力検証含む）を作成</li>
+	<li>RepositoryにForUpdateメソッド（悲観ロック）を追加</li>
+	<li>ControllerとServiceの対応</li>
+	<li>message.propertiesに定義を追加</li>
+	<li>EntityにバージョンのAuditingフィールドを追加（楽観ロック）</li>
+	<li>テンプレートとDTOの対応</li>
+	<li>Controllerクラスに同時更新検出対応を追加</li>
+	<li>message.propertiesに定義を追加</li>
+	<li>insert into local_user</li>
+</ol>
 <h2>6. JPA Auditing（更新情報の自動設定）</h2>
 <div>
 	<a href="https://github.com/no29571/user/tree/ex-audit">GitHub：ex-audit</a>

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import com.example.entity.LocalUser;
 import com.example.repositry.LocalUserRepository;
 import com.example.validation.LocalUserForm;
+import com.example.validation.PasswordChangeForm;
+import com.example.validation.PasswordDoseNotMatchException;
 
 import jakarta.transaction.Transactional;
 
@@ -34,6 +36,20 @@ public class LocalUserService {
 		LocalUser user = new LocalUser();
 		BeanUtils.copyProperties(form, user);
 		return userRepository.save(user);
+	}
+	
+	public Optional<LocalUser> changePassword(PasswordChangeForm form) 
+			throws PasswordDoseNotMatchException {
+		Optional<LocalUser> opt = userRepository.findOneForUpdateByEmail(form.getEmail());
+		if (!opt.isPresent()) {
+			return Optional.empty();
+		}
+		LocalUser user = opt.get();
+		if (!passwordEncoder.matches(form.getPasswordOld(), user.getPassword())) {
+			throw new PasswordDoseNotMatchException();
+		}
+		user.setPassword(passwordEncoder.encode(form.getPasswordNew()));//暗号化
+		return Optional.of(userRepository.save(user));
 	}
 	
 	public List<LocalUser> findAll() {

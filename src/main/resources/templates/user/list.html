@@ -31,6 +31,7 @@
 			<th>email</th>
 			<!--<th>password</th>-->
 			<th>role</th>
+			<th>ver</th>
 			<th>createdBy</th>
 			<th>createdDate</th>
 			<th>modifiedBy</th>
@@ -45,6 +46,7 @@
 			<td th:text="${user.email}"></td>
 			<!--<td th:text="${user.password}"></td>-->
 			<td th:text="${user.role}"></td>
+			<td th:text="${user.ver}"></td>
 			<td th:text="${user.createdBy}"></td>
 			<td th:text="${#temporals.format(user.createdDate,'yyyy/MM/dd HH:mm')}"></td>
 			<td th:text="${user.modifiedBy}"></td>

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -80,7 +81,13 @@ public class LocalUserController {
 		if (result.hasErrors()) {
 			return "/user/edit";
 		}
-		userService.update(form);
+		try {
+			userService.update(form);
+		//} catch (org.hibernate.StaleObjectStateException ex) {
+		} catch (ObjectOptimisticLockingFailureException ex) {//@Versionによる排他制御
+			result.rejectValue("ver", "local_user.ver.modified");//messages.properties
+			return "/user/edit";
+		}
 		return "redirect:/listUser";
 	}
 	

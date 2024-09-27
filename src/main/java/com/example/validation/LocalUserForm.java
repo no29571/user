@@ -31,4 +31,6 @@ public class LocalUserForm {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	private Role[] roleList = Role.values();
+	
+	private Long ver;
 }
