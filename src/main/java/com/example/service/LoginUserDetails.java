@@ -18,7 +18,7 @@ public class LoginUserDetails implements UserDetails {
 	}
 	
 	public Integer getId() {
-		//更新情報（作成者・更新者）に使用
+		//更新情報（作成者・更新者）設定に使用
 		return user.getId();
 	}
 	
