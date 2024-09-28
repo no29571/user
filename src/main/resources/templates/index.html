@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja"
 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
@@ -10,7 +11,7 @@
 <body>
 <h1>認証とマスタメンテのサンプル</h1>
 <ul>
-	<li><a th:href="@{/logout}">ログアウト</a></li>
+	<li><span sec:authentication="name"></span>: <a th:href="@{/logout}">ログアウト</a></li>
 	<li><a th:href="@{/listUser}">ユーザ一覧</a></li>
 </ul>
 <h2>4. ログインのカスタマイズ</h2>
@@ -26,6 +27,7 @@
 	<li>UserDetailsクラスとUserDetailsServiceクラスを作成</li>
 	<li>ログインのテンプレートを作成</li>
 	<li>Controllerクラスにマッピングを追加</li>
+	<li>テンプレートへのログイン情報出力例（usernameを出力）</li>
 	<li>data.sql（ログインテスト用初期ユーザ登録）を作成</li>
 	<li>application.propertiesで上記実行設定を追加</li>
 	<li>※テーブル作成のタイミングによりエラーになる場合は手動insert</li>

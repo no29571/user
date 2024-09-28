@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja"
 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
@@ -9,7 +10,7 @@
 </head>
 <body>
 <div>
-	<a th:href="@{/logout}">ログアウト</a>
+	<span sec:authentication="name"></span>: <a th:href="@{/logout}">ログアウト</a>
 </div>
 <h1>list</h1>
 <div>
