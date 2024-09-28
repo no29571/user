@@ -1,9 +1,10 @@
 package com.example.service;
 
 import java.util.Collection;
+import java.util.Collections;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.entity.LocalUser;
@@ -29,7 +30,8 @@ public class LoginUserDetails implements UserDetails {
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return AuthorityUtils.createAuthorityList(user.getRole().getAuthName());
+		//実装しないので、固定でUSERを返却
+		return Collections.singleton(new SimpleGrantedAuthority("USER"));
 	}
 	
 	@Override

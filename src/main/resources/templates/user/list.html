@@ -10,7 +10,7 @@
 </head>
 <body>
 <div>
-	<a th:href="@{/logout}"><span sec:authentication="principal.displayName"></span>: ログアウト</a>
+	<span sec:authentication="principal.displayName"></span>: <a th:href="@{/logout}">ログアウト</a>
 </div>
 <h1>list</h1>
 <div>
@@ -30,7 +30,6 @@
 			<th>name</th>
 			<th>email</th>
 			<!--<th>password</th>-->
-			<th>role</th>
 			<th>ver</th>
 			<th>createdBy</th>
 			<th>createdDate</th>
@@ -45,7 +44,6 @@
 			<td th:text="${user.name}"></td>
 			<td th:text="${user.email}"></td>
 			<!--<td th:text="${user.password}"></td>-->
-			<td th:text="${user.role}"></td>
 			<td th:text="${user.ver}"></td>
 			<td th:text="${user.createdBy}"></td>
 			<td th:text="${#temporals.format(user.createdDate,'yyyy/MM/dd HH:mm')}"></td>
