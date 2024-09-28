@@ -10,7 +10,6 @@ Hibernate:
         email varchar(100) not null,
         name varchar(100) not null,
         password varchar(100) not null,
-        role varchar(10) not null check (role in ('GUEST','USER','ADMIN')),
         primary key (id)
     )
 Hibernate: 

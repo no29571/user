@@ -10,8 +10,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.example.entity.Role;
-
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -28,9 +26,6 @@ public class SecurityConfig {
 				.requestMatchers("/css/**").permitAll()	// CSSは認証不要
 				.requestMatchers("/error").permitAll()	// エラーページは認証不要
 				//.requestMatchers("/").permitAll()	// トップページは認証不要
-				.requestMatchers("/createUser").hasAnyAuthority(Role.ADMIN.getAuthName())//ADMIN以外はForbidden
-				//hasAnyRole使い方要注意：判定時にプレフィックス"ROLE_"が付加されるため、引数は"ROLE_"をつけずに渡す
-				.requestMatchers("/editUser/**").hasAnyRole(Role.ADMIN.name(), Role.USER.name())//ADMINとUSER以外はForbidden
 				.anyRequest().authenticated()		// 他のURLは要認証
 			)
 			.formLogin(login -> login
