@@ -10,7 +10,7 @@
 </head>
 <body>
 <div>
-	<a th:href="@{/logout}"><span sec:authentication="principal.displayName"></span>: ログアウト</a>
+	<span sec:authentication="principal.displayName"></span>: <a th:href="@{/logout}">ログアウト</a>
 </div>
 <h1>list</h1>
 <div>

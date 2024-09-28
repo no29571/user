@@ -11,11 +11,25 @@
 <body>
 <h1>認証とマスタメンテのサンプル</h1>
 <ul>
-	<li><a th:href="@{/logout}"><span sec:authentication="principal.displayName"></span>: ログアウト</a></li>
+	<li><span sec:authentication="principal.displayName"></span>: <a th:href="@{/logout}">ログアウト</a></li>
 	<li><a th:href="@{/changePassword}">パスワード変更</a></li>
 	<li><a th:href="@{/listUser}">ユーザ一覧</a></li>
 </ul>
-<h2>7. 排他制御</h2>
+<h2>7. Role（enum）</h2>
+<div>
+	<a href="https://github.com/no29571/user/tree/ex-role">GitHub：ex-role</a>
+</div>
+<ol>
+	<li>drop table local_user cascade;</li>
+	<li>Roleクラスを作成</li>
+	<li>EntityとDTOとテンプレートにRoleのフィールドを追加</li>
+	<li>DTOクラスにRoleのプルダウンリストを追加</li>
+	<li>UserDetailsクラス（getAuthorities）の対応</li>
+	<li>Configクラスの権限設定例（ユーザ登録・編集）</li>
+	<li>テンプレートの権限設定例（削除フォーム）</li>
+	<li>insert into local_user</li>
+</ol>
+<h2>6. 排他制御</h2>
 <div>
 	<a href="https://github.com/no29571/user/tree/ex-lock">GitHub：ex-lock</a>
 </div>
@@ -32,34 +46,19 @@
 	<li>message.propertiesに定義を追加</li>
 	<li>insert into local_user</li>
 </ol>
-<h2>6. JPA Auditing（更新情報の自動設定）</h2>
+<h2>5. JPA Auditing（更新情報の自動設定）</h2>
 <div>
 	<a href="https://github.com/no29571/user/tree/ex-audit">GitHub：ex-audit</a>
 </div>
 <ol>
 	<li>drop table local_user cascade;</li>
 	<li>Configクラスを作成</li>
-	<li>UserDetailsクラス（getId）の対応</li>
+	<li>UserDetailsクラスの対応（独自情報のGetterを追加）</li>
 	<li>Auditingの共通クラス（親クラス）を作成</li>
 	<li>Entityクラスに上記の継承を設定</li>
 	<li>※親クラスをつくらずEntityクラスに直接フィールド追加でも可</li>
 	<li>テンプレートを調整</li>
 	<li>テンプレートへのログイン情報出力例（displayNameを出力）</li>
-	<li>insert into local_user</li>
-</ol>
-<h2>5. Role・ログイン情報の使用</h2>
-<div>
-	<a href="https://github.com/no29571/user/tree/ex-role">GitHub：ex-role</a>
-</div>
-<ol>
-	<li>drop table local_user cascade;</li>
-	<li>Roleクラスを作成</li>
-	<li>EntityとDTOとテンプレートにRoleのフィールドを追加</li>
-	<li>DTOクラスにRoleのプルダウンリストを追加</li>
-	<li>UserDetailsクラス（getAuthorities）の対応</li>
-	<li>Configクラスの権限設定例（ユーザ登録・編集）</li>
-	<li>テンプレートの権限設定例（削除フォーム）</li>
-	<li>テンプレートへのログイン情報出力例（usernameを出力）</li>
 	<li>insert into local_user</li>
 </ol>
 <h2>4. ログインのカスタマイズ</h2>
@@ -75,6 +74,7 @@
 	<li>UserDetailsクラスとUserDetailsServiceクラスを作成</li>
 	<li>ログインのテンプレートを作成</li>
 	<li>Controllerクラスにマッピングを追加</li>
+	<li>テンプレートへのログイン情報出力例（usernameを出力）</li>
 	<li>data.sql（ログインテスト用初期ユーザ登録）を作成</li>
 	<li>application.propertiesで上記実行設定を追加</li>
 	<li>※テーブル作成のタイミングによりエラーになる場合は手動insert</li>
