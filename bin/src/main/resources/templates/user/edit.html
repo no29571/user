@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/css/site.css}" rel="stylesheet" />
+<title>edit | sample</title>
+</head>
+<body>
+<div>
+	<a th:href="@{/listUser}">一覧に戻る</a>
+</div>
+<h1>edit</h1>
+<!--編集フォーム-->
+<form th:action="@{/editUser}" th:object="${localUserForm}" method="post">
+	<div>
+		<input type="hidden" th:field="*{ver}" />
+		<span th:if="${#fields.hasErrors('ver')}" th:errors="*{ver}"></span>
+	</div>
+	<div>
+		<label for="name">name</label>
+		<input type="text" th:field="*{name}" id="name" />
+		<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+	</div>
+	<div>
+		<label for="email">email</label>
+		<input type="text" th:field="*{email}" id="email" />
+		<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+	</div>
+	<div>
+		<label for="role">role</label>
+		<select th:field="*{role}" id="role">
+			<option th:each="item : *{roleList}" th:value="${item.name}" th:text="${item.displayName}"></option>
+		</select>
+		<span th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></span>
+	</div>
+	<div>
+		<input type="hidden" th:field="*{password}" />
+		<input type="hidden" th:field="*{id}" />
+		<button type="submit">登録</button>
+	</div>
+</form>
+<!--削除フォーム-->
+<form sec:authorize="${hasRole('ROLE_ADMIN')}"
+	th:action="@{/deleteUser}" th:object="${localUserForm}" method="post">
+	<div>
+		<input type="hidden" th:field="*{id}" />
+		<button type="submit">削除</button>
+	</div>
+</form>
+</body>
+</html>
