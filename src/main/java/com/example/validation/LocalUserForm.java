@@ -24,5 +24,7 @@ public class LocalUserForm {
 	private String passwordRaw;
 	private String password;
 	
+	private boolean enabled;
+	
 	private Long ver;
 }

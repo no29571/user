@@ -28,5 +28,4 @@ public @interface ByteLength {
 	public @interface List {
     	ByteLength[] value();
 	}
-
 }

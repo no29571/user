@@ -5,13 +5,15 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" >
+<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
 <link th:href="@{/css/site.css}" rel="stylesheet" />
 <title>list | sample</title>
 </head>
 <body>
-<div>
-	<span sec:authentication="principal.displayName"></span>: <a th:href="@{/logout}">ログアウト</a>
-</div>
+<header th:replace="nav"></header>
+<div class="container">
 <h1>list</h1>
 <div>
 	<a th:href="@{/createUser}">新規登録</a>
@@ -30,6 +32,7 @@
 			<th>name</th>
 			<th>email</th>
 			<!--<th>password</th>-->
+			<th>enabled</th>
 			<th>ver</th>
 			<th>createdBy</th>
 			<th>createdDate</th>
@@ -44,16 +47,18 @@
 			<td th:text="${user.name}"></td>
 			<td th:text="${user.email}"></td>
 			<!--<td th:text="${user.password}"></td>-->
+			<td th:text="${user.enabled}"></td>
 			<td th:text="${user.ver}"></td>
 			<td th:text="${user.createdBy}"></td>
 			<td th:text="${#temporals.format(user.createdDate,'yyyy/MM/dd HH:mm')}"></td>
 			<td th:text="${user.modifiedBy}"></td>
 			<td th:text="${#temporals.format(user.modifiedDate,'yyyy/MM/dd HH:mm')}"></td>
 			<td>
-				<a th:href="@{/editUser/{id}(id=${user.id})}">編集・削除</a>
+				<a th:href="@{/editUser/{id}(id=${user.id})}">編集</a>
 			</td>
 		</tr>
 	</tbody>
 </table>
+</div>
 </body>
 </html>

@@ -64,7 +64,7 @@ public class LocalUserService {
 		return userRepository.findById(id);
 	}
 	
-	public void delete(Integer id) {
+	/*public void delete(Integer id) {
 		userRepository.deleteById(id);
-	}
+	}*/
 }

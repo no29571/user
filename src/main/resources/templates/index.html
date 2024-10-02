@@ -5,29 +5,26 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" >
+<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
 <link th:href="@{/css/site.css}" rel="stylesheet" />
 <title>home | sample</title>
 </head>
 <body>
+<header th:replace="nav"></header>
+<div class="container">
 <h1>認証とマスタメンテのサンプル</h1>
-<ul>
-	<li><span sec:authentication="principal.displayName"></span>: <a th:href="@{/logout}">ログアウト</a></li>
-	<li><a th:href="@{/changePassword}">パスワード変更</a></li>
-	<li><a th:href="@{/listUser}">ユーザ一覧</a></li>
-</ul>
-<h2>7. Role（enum）</h2>
+<h2>7. Navigation（bootstrap）</h2>
 <div>
-	<a href="https://github.com/no29571/user/tree/ex-role">GitHub：ex-role</a>
+	<a href="https://github.com/no29571/user/tree/ex-webjars">GitHub：ex-webjars</a>
 </div>
 <ol>
-	<li>drop table local_user cascade;</li>
-	<li>Roleクラスを作成</li>
-	<li>EntityとDTOとテンプレートにRoleのフィールドを追加</li>
-	<li>DTOクラスにRoleのプルダウンリストを追加</li>
-	<li>UserDetailsクラス（getAuthorities）の対応</li>
-	<li>Configクラスの権限設定例（ユーザ登録・編集）</li>
-	<li>テンプレートの権限設定例（削除フォーム）</li>
-	<li>insert into local_user</li>
+	<li>pom.xmlにorg.webjarsを追加</li>
+	<li>【起動エラーが出る場合】実行 - Marven clean</li>
+	<li>ナビゲーションのテンプレートを作成</li>
+	<li>他のテンプレートの上記対応</li>
+	<li>【ログイン画面やエラー画面にもbootstrap等をリンクする場合】securityFilterChainでwebjarsを許可</li>
 </ol>
 <h2>6. 排他制御</h2>
 <div>
@@ -46,7 +43,7 @@
 	<li>message.propertiesに定義を追加</li>
 	<li>insert into local_user</li>
 </ol>
-<h2>5. JPA Auditing（更新情報の自動設定）</h2>
+<h2>5. 更新情報の自動設定（JPA Auditing）</h2>
 <div>
 	<a href="https://github.com/no29571/user/tree/ex-audit">GitHub：ex-audit</a>
 </div>
@@ -58,6 +55,9 @@
 	<li>Entityクラスに上記の継承を設定</li>
 	<li>※親クラスをつくらずEntityクラスに直接フィールド追加でも可</li>
 	<li>テンプレートを調整</li>
+	<li>ユーザ削除の機能を廃止</li>
+	<li>EntityとDTOとテンプレートに有効化のフィールドを追加</li>
+	<li>UserDetailsクラスの対応（isEnabled）</li>
 	<li>テンプレートへのログイン情報出力例（displayNameを出力）</li>
 	<li>insert into local_user</li>
 </ol>
@@ -151,5 +151,6 @@ CONNECTION LIMIT = -1;
 	<li>Password: コンソールに出力されているパスワード（Using generated security password:～）</li>
 	<li>Sign in</li>
 </ol>
+</div>
 </body>
 </html>
