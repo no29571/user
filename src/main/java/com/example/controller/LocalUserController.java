@@ -85,7 +85,7 @@ public class LocalUserController {
 			userService.update(form);
 		//} catch (org.hibernate.StaleObjectStateException ex) {
 		} catch (ObjectOptimisticLockingFailureException ex) {//@Versionによる排他制御
-			result.rejectValue("ver", "local_user.ver.modified");//messages.properties
+			result.rejectValue("ver", "com.example.controller.LocalUserController.editUser.ObjectOptimisticLockingFailureException");//messages.properties
 			return "/user/edit";
 		}
 		return "redirect:/listUser";

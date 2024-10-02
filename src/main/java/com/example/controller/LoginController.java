@@ -57,11 +57,11 @@ public class LoginController {
 				return "redirect:/logout";
 			}
 		} catch (PasswordDoseNotMatchException ex) {
-			result.rejectValue("passwordOld", "local_user.password.mismatch");//messages.properties
+			result.rejectValue("passwordOld", "com.example.controller.LoginController.changePassword.PasswordDoseNotMatchException");//messages.properties
 			return "/passwd";
 		}
 		//return "redirect:/";
-		model.addAttribute("message", messageSource.getMessage("local_user.password.changed", null, Locale.JAPAN));
+		model.addAttribute("message", messageSource.getMessage("com.example.controller.LoginController.changePassword", null, Locale.JAPAN));
 		return "/passwd";
 	}
 }
