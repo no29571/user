@@ -17,7 +17,6 @@ import com.example.entity.LocalUser;
 import com.example.service.LocalUserService;
 import com.example.service.LoginUserDetails;
 import com.example.validation.PasswordChangeForm;
-import com.example.validation.PasswordDoseNotMatchException;
 
 @Controller
 public class LoginController {
@@ -50,14 +49,12 @@ public class LoginController {
 		if (result.hasErrors()) {
 			return "/passwd";
 		}
-		try {
-			form.setEmail(userDetails.getUsername());
-			Optional<LocalUser> opt = userService.changePassword(form);
-			if (opt.isEmpty()) {
-				return "redirect:/logout";
-			}
-		} catch (PasswordDoseNotMatchException ex) {
-			result.rejectValue("passwordOld", "com.example.controller.LoginController.changePassword.PasswordDoseNotMatchException");//messages.properties
+		form.setEmail(userDetails.getUsername());
+		Optional<LocalUser> opt = userService.changePassword(form, result);
+		if (opt.isEmpty()) {
+			return "redirect:/logout";
+		}
+		if (result.hasErrors()) {
 			return "/passwd";
 		}
 		//return "redirect:/";

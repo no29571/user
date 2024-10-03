@@ -7,12 +7,12 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 import com.example.entity.LocalUser;
 import com.example.repositry.LocalUserRepository;
 import com.example.validation.LocalUserForm;
 import com.example.validation.PasswordChangeForm;
-import com.example.validation.PasswordDoseNotMatchException;
 
 import jakarta.transaction.Transactional;
 
@@ -38,15 +38,15 @@ public class LocalUserService {
 		return userRepository.save(user);
 	}
 	
-	public Optional<LocalUser> changePassword(PasswordChangeForm form) 
-			throws PasswordDoseNotMatchException {
+	public Optional<LocalUser> changePassword(PasswordChangeForm form, BindingResult result) {
 		Optional<LocalUser> opt = userRepository.findOneForUpdateByEmail(form.getEmail());
-		if (!opt.isPresent()) {
-			return Optional.empty();
+		if (opt.isEmpty()) {
+			return opt;
 		}
 		LocalUser user = opt.get();
 		if (!passwordEncoder.matches(form.getPasswordOld(), user.getPassword())) {
-			throw new PasswordDoseNotMatchException();
+			result.rejectValue("passwordOld", "com.example.service.LocalUserService.changePassword.matches");//messages.properties
+			return opt;
 		}
 		user.setPassword(passwordEncoder.encode(form.getPasswordNew()));//暗号化
 		return Optional.of(userRepository.save(user));
