@@ -14,7 +14,7 @@ import jakarta.validation.Payload;
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ByteLength {
-	String message() default "{com.example.service.ByteLength.message}";//messages.properties
+	String message() default "{com.example.validation.ByteLength.message}";//messages.properties
 	
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
@@ -28,5 +28,4 @@ public @interface ByteLength {
 	public @interface List {
     	ByteLength[] value();
 	}
-
 }
