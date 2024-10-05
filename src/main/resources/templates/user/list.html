@@ -18,7 +18,8 @@
 <div>
 	<a th:href="@{/createUser}">新規登録</a>
 </div>
-<form th:action="@{/searchUser}" method="post">
+<form sec:authorize="${hasRole('ROLE_ADMIN')}"
+	th:action="@{/searchUser}" method="post">
 	<div>
 		<input type="text" name="keyword" th:value="${keyword}" />
 		<label for="keyword">を含むemailを</label>

@@ -20,3 +20,34 @@ Hibernate:
 Hibernate: 
     alter table if exists local_user 
        add constraint UK46f7ufu7j9nkhuyfly98to4u1 unique (email)
+Hibernate: 
+    create table local_role (
+        name varchar(10) not null,
+        created_by integer not null,
+        created_date timestamp(6) not null,
+        modified_by integer not null,
+        modified_date timestamp(6) not null,
+        ver bigint not null,
+        primary key (name)
+    )
+Hibernate: 
+    create table local_user_role (
+        role_name varchar(255) not null,
+        user_id integer not null,
+        created_by integer not null,
+        created_date timestamp(6) not null,
+        modified_by integer not null,
+        modified_date timestamp(6) not null,
+        ver bigint not null,
+        primary key (role_name, user_id)
+    )
+Hibernate: 
+    alter table if exists local_user_role 
+       add constraint FKienf57uw1gchk09mtnghcmdj3 
+       foreign key (role_name) 
+       references local_role
+Hibernate: 
+    alter table if exists local_user_role 
+       add constraint FKndygxa0wh6omnvwhyjdu0lbx 
+       foreign key (user_id) 
+       references local_user

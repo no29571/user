@@ -43,7 +43,8 @@
 	</div>
 </form>
 <!--削除フォーム
-<form th:action="@{/deleteUser}" th:object="${localUserForm}" method="post">
+<form sec:authorize="${hasRole('ROLE_ADMIN')}"
+	th:action="@{/deleteUser}" th:object="${localUserForm}" method="post">
 	<div>
 		<input type="hidden" th:field="*{id}" />
 		<button type="submit">削除</button>

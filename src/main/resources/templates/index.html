@@ -15,6 +15,37 @@
 <header th:replace="nav"></header>
 <div class="container">
 <h1>認証とマスタメンテのサンプル</h1>
+<h2>9. 複合主キー・外部キー・結合</h2>
+<div>
+	<a href="https://github.com/no29571/user/tree/ex-join">GitHub：ex-join</a>
+</div>
+<ol>
+	<li>drop table local_user cascade;</li>
+	<li>ユーザEntityのロールのフィールドを廃止</li>
+	<li>DTOとテンプレートの上記対応</li>
+	<li>ロールのEntity・Repository・DTO・検証・Controller・テンプレートを作成</li>
+	<li>ロール付与のEntity・ID・Repository・DTO・Controller・テンプレートを作成</li>
+	<li>ナビゲーションに上記を追加</li>
+	<li>getAuthoritiesの対応（UserDetails・UserDetailsService・Entity）</li>
+	<li>Configクラスによる権限設定例（ユーザ登録・編集）</li>
+	<li>テンプレートによる権限設定例（検索フォーム）</li>
+	<li>※各機能の権限設定は要検討</li>
+	<li>insert into local_user</li>
+</ol>
+<h2>8. Role（enum）</h2>
+<div>
+	<a href="https://github.com/no29571/user/tree/ex-role">GitHub：ex-role</a>
+</div>
+<ol>
+	<li>drop table local_user cascade;</li>
+	<li>Roleクラス（enum）を作成</li>
+	<li>EntityとDTOとテンプレートにRoleのフィールドを追加</li>
+	<li>DTOクラスにRoleのプルダウンリストを追加</li>
+	<li>UserDetailsクラス（getAuthorities）の対応</li>
+	<li>Configクラスによる権限設定例（ユーザ登録・編集）</li>
+	<li>テンプレートによる権限設定例（検索フォーム）</li>
+	<li>insert into local_user</li>
+</ol>
 <h2>7. Navigation（bootstrap）</h2>
 <div>
 	<a href="https://github.com/no29571/user/tree/ex-webjars">GitHub：ex-webjars</a>
