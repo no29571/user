@@ -21,7 +21,7 @@ public class PasswordChangeForm {
 	private String passwordConfirm;
 	
 	//テンプレート側では、inputSameフィールドのエラーメッセージとして扱う
-	@AssertTrue(message = "{local_user.password.input.mismatch}")
+	@AssertTrue(message = "{com.example.validation.PasswordChangeForm.isInputSame}")
 	public boolean isInputSame() {
 		if (passwordNew == null) {
 			if (passwordConfirm == null) {

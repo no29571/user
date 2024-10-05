@@ -17,6 +17,9 @@ public class ByteLengthValidator implements ConstraintValidator<ByteLength, Stri
 	
 	@Override
 	public boolean isValid(String value, ConstraintValidatorContext context) {
+		if (value == null) {
+			value = "";
+		}
 		int len = value.getBytes(StandardCharsets.UTF_8).length;
 		if (len < min || len > max) {
 			return false;
@@ -24,5 +27,4 @@ public class ByteLengthValidator implements ConstraintValidator<ByteLength, Stri
 			return true;
 		}
 	}
-
 }
