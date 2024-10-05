@@ -25,17 +25,22 @@
 		<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
 	</div>
 	<div>
+		<label for="enabled">enabled</label>
+		<input type="checkbox" th:field="*{enabled}" id="enabled" />
+		<span th:if="${#fields.hasErrors('enabled')}" th:errors="*{enabled}"></span>
+	</div>
+	<div>
 		<input type="hidden" th:field="*{password}" />
 		<input type="hidden" th:field="*{id}" />
 		<button type="submit">登録</button>
 	</div>
 </form>
-<!--削除フォーム-->
+<!--削除フォーム
 <form th:action="@{/deleteUser}" th:object="${localUserForm}" method="post">
 	<div>
 		<input type="hidden" th:field="*{id}" />
 		<button type="submit">削除</button>
 	</div>
-</form>
+</form>-->
 </body>
 </html>

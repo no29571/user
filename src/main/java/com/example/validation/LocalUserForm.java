@@ -23,4 +23,6 @@ public class LocalUserForm {
 	@Size(min = 1, max = 50)
 	private String passwordRaw;
 	private String password;
+	
+	private boolean enabled;
 }

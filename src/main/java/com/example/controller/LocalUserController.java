@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,6 +44,7 @@ public class LocalUserController {
 	@GetMapping("/createUser")
 	public String createUser(Model model) {
 		LocalUserForm form = new LocalUserForm();
+		form.setEnabled(true);
 		model.addAttribute("localUserForm", form);
 		return "/user/create";
 	}
@@ -84,10 +84,11 @@ public class LocalUserController {
 		return "redirect:/listUser";
 	}
 	
+	//作成者・更新者の参照用に、削除せず有効・無効で管理に変更
 	//deleteフォームsubmit時
-	@PostMapping("/deleteUser")
+	/*@PostMapping("/deleteUser")
 	public String deleteUser(@ModelAttribute("localUserForm") LocalUserForm form) {
 		userService.delete(form.getId());
 		return "redirect:/listUser";
-	}
+	}*/
 }

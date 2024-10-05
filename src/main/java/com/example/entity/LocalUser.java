@@ -24,4 +24,7 @@ public class LocalUser extends AuditingEntity {//local_user
 	
 	@Column(length = 100, nullable = false)
 	private String password;
+	
+	@Column(nullable = false)
+	private boolean enabled;
 }

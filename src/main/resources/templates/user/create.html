@@ -29,6 +29,11 @@
 		<span th:if="${#fields.hasErrors('passwordRaw')}" th:errors="*{passwordRaw}"></span>
 	</div>
 	<div>
+		<label for="enabled">enabled</label>
+		<input type="checkbox" th:field="*{enabled}" id="enabled" />
+		<span th:if="${#fields.hasErrors('enabled')}" th:errors="*{enabled}"></span>
+	</div>
+	<div>
 		<button type="submit">登録</button>
 	</div>
 </form>

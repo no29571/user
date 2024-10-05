@@ -14,7 +14,7 @@
 	<li><span sec:authentication="principal.displayName"></span>: <a th:href="@{/logout}">ログアウト</a></li>
 	<li><a th:href="@{/listUser}">ユーザ一覧</a></li>
 </ul>
-<h2>5. JPA Auditing（更新情報の自動設定）</h2>
+<h2>5. 更新情報の自動設定（JPA Auditing）</h2>
 <div>
 	<a href="https://github.com/no29571/user/tree/ex-audit">GitHub：ex-audit</a>
 </div>
@@ -26,6 +26,9 @@
 	<li>Entityクラスに上記の継承を設定</li>
 	<li>※親クラスをつくらずEntityクラスに直接フィールド追加でも可</li>
 	<li>テンプレートを調整</li>
+	<li>ユーザ削除の機能を廃止</li>
+	<li>EntityとDTOとテンプレートに有効化のフィールドを追加</li>
+	<li>UserDetailsクラスの対応（isEnabled）</li>
 	<li>テンプレートへのログイン情報出力例（displayNameを出力）</li>
 	<li>insert into local_user</li>
 </ol>
