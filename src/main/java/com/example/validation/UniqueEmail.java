@@ -14,7 +14,7 @@ import jakarta.validation.Payload;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UniqueEmail {
-	String message() default "{com.example.service.UniqueEmail.message}";//messages.properties
+	String message() default "{com.example.validation.UniqueEmail.message}";//messages.properties
 	
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
