@@ -25,6 +25,7 @@ public class SecurityConfig {
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests(authz -> authz
+				.requestMatchers("/webjars/**").permitAll()	// WebJarsは認証不要
 				.requestMatchers("/css/**").permitAll()	// CSSは認証不要
 				.requestMatchers("/error").permitAll()	// エラーページは認証不要
 				//.requestMatchers("/").permitAll()	// トップページは認証不要

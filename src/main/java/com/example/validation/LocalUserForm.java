@@ -28,6 +28,8 @@ public class LocalUserForm {
 	private String passwordRaw;
 	private String password;
 	
+	private boolean enabled;
+	
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	private Role[] roleList = Role.values();

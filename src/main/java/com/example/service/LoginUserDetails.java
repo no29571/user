@@ -63,7 +63,6 @@ public class LoginUserDetails implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		//実装しないので、固定でtrueを返却
-		return true;
+		return user.isEnabled();
 	}
 }

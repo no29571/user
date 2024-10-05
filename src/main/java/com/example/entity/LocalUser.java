@@ -30,4 +30,7 @@ public class LocalUser extends AuditingEntity {//local_user
 	@Enumerated(EnumType.STRING)
 	@Column(length = 10, nullable = false)
 	private Role role;
+	
+	@Column(nullable = false)
+	private boolean enabled;
 }
