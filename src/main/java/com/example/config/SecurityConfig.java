@@ -27,6 +27,9 @@ public class SecurityConfig {
 				.requestMatchers("/css/**").permitAll()	// CSSは認証不要
 				.requestMatchers("/error").permitAll()	// エラーページは認証不要
 				//.requestMatchers("/").permitAll()	// トップページは認証不要
+				
+				//.requestMatchers("/**").permitAll()	// 初期ユーザ作成時のみ有効化
+				
 				.anyRequest().authenticated()		// 他のURLは要認証
 			)
 			.formLogin(login -> login
