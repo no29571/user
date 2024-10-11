@@ -1,4 +1,6 @@
 --ログインテスト用ユーザ（パスワードはtest）
+--insertしたユーザでログインエラーになる（暗号文が異なる）場合は
+--プログラムから作成する（SecurityConfigの調整要）
 insert into local_user
 (name, email, password)
 select 'テスト用', 'test@example.com'
