@@ -23,7 +23,10 @@ public class AuditConfig {
         		if (auth == null || !auth.isAuthenticated() || auth.getPrincipal() == null) {
         			return Optional.empty();
         		}
-        		LoginUserDetails principal = (LoginUserDetails) auth.getPrincipal();
+        		
+    			//return Optional.of(1);//初期ユーザ作成時のみ有効化
+
+    			LoginUserDetails principal = (LoginUserDetails) auth.getPrincipal();
         		return Optional.of(principal.getId());
         	}
         };
